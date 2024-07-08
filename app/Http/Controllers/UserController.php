@@ -18,7 +18,8 @@ class UserController extends Controller
     {
         if(auth()->check())
         {
-            return view('home-feed');
+            $posts = auth()->user()->feedPosts()->latest()->paginate(5);
+            return view('home-feed', compact('posts'));
         }
         else
         {

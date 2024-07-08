@@ -224,6 +224,7 @@ return [
 		"sheba_number" => "شماره شبا",
 		"iban" => "شماره شبا",
 		"accountـnumber" => "شماره حساب",
-        "body" => "محتوا"		
+        "body" => "محتوا",
+        "avatar" => 'آواتار'		
     ],
 ];
