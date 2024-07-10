@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pageTitle="پست جدید">
     <div class="container text-right tz-fix-height py-md-5 container--narrow">
         <form action="/create-post" method="POST">
           @csrf

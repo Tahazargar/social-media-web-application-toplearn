@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pageTitle="ویرایش پست">
     <div class="container text-right tz-fix-height py-md-5 container--narrow">
         <form action="/post/{{ $post->id }}" method="POST">
           @csrf

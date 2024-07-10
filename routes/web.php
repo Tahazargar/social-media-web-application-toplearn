@@ -22,6 +22,7 @@ Route::get('post/{post}', [PostController::class, 'showSinglePost']);
 Route::delete('post/{post}', [PostController::class, 'delete'])->can('delete', 'post');
 Route::get('post/{post}/edit', [PostController::class, 'showEditForm'])->can('update', 'post');
 Route::put('post/{post}', [PostController::class, 'updatePost'])->can('update', 'post');
+Route::get('search/{term}', [Postcontroller::class, 'search']);
 
 // Profile routes
 Route::get('profile/{username:username}', [ProfileController::class, 'showPosts']);

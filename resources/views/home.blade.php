@@ -1,4 +1,4 @@
-<x-layout>
+<x-layout pageTitle="تاپ لرن">
     <div class="container py-md-5 tz-fix-height">
         <div class="row align-items-center">
           <div class="col-lg-7 py-3 py-md-5">
