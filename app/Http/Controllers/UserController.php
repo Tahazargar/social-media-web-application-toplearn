@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\ExampleEvent;
+use App\Events\OurExampleEvent;
+use App\Events\SecondEvent;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
@@ -10,6 +13,7 @@ class UserController extends Controller
 {
     public function logout()
     {
+        event(new ExampleEvent(['username' => auth()->user()->username, 'action' => 'logout']));
         auth()->logout();
         return redirect('/')->with('success', 'شما با موفقیت خارج شدید.');
     }
@@ -37,6 +41,7 @@ class UserController extends Controller
         if(auth()->attempt(['username' => $input['login-username'], 'password' => $input['login-password']]))
         {
              $request->session()->regenerate();
+             event(new ExampleEvent(['username' => auth()->user()->username, 'action' => 'login']));
              return redirect('/')->with('success', 'با موفقیت وارد شدید.');
         }
         else
