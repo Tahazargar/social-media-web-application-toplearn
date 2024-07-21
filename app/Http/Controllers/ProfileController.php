@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Test;
 use App\Models\User;
 use App\Models\Follow;
 use Illuminate\Http\Request;
@@ -36,6 +35,11 @@ class ProfileController extends Controller
         return view('profile-posts', compact('posts'));
     }
 
+    public function showPostsRaw(User $username)
+    {
+        return response()->json(['theHTML' => view('profile-posts-only', ['posts' =>  $username->posts()->latest()->get()])->render(), 'docTitle' => $username->username . ' پروفایل']);
+    }
+
     public function profileFollowers(User $username)
     {
         $this->getSharedData($username);
@@ -43,11 +47,22 @@ class ProfileController extends Controller
         return view('profile-followers', compact('followers'));
     }
 
+    public function profileFollowersRaw(User $username)
+    {
+        return response()->json(['theHTML' => view('profile-followers-only', ['followers' =>  $username->followers()->latest()->get()])->render(), 'docTitle' => $username->username . ' دنبال کنندگان']);
+    }
+
     public function profileFollowings(User $username)
     {
         $this->getSharedData($username);
         $followings = $username->followTheUsers()->latest()->get();
         return view('profile-followings', compact('followings'));
+    }
+
+    public function profileFollowingsRaw(User $username)
+    {
+        return response()->json(['theHTML' => view('profile-followings-only', ['followings' =>  $username->followTheUsers()->latest()->get()])->render(), 'docTitle' => $username->username . ' دنبال شوندگان']);
+
     }
 
     public function showChangeAvatarForm()

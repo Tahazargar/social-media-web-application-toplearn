@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Jobs\SendNewPostEmail;
+use App\Jobs\SendPostEmail;
+use App\Mail\PostMail;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
 
 class PostController extends Controller
 {
@@ -31,6 +36,9 @@ class PostController extends Controller
         $input['body'] = strip_tags($input['body']);
 
         Post::create($input);
+
+        dispatch(new SendPostEmail(['sendTo' => auth()->user()->email, 'name' => auth()->user()->username, 'title' => $request->title]));
+
         return redirect('/profile/' . auth()->user()->username)->with('success', 'پست شما با موفقیت ایجاد شد.');
     }
 

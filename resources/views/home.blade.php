@@ -3,7 +3,7 @@
         <div class="row align-items-center">
           <div class="col-lg-7 py-3 py-md-5">
             <h1 class="display-3 text-right">آخرین بار کی نوشتی؟</h1>
-            <p class="lead text-right text-muted">به رسانه ما خوش آمدی، توی این رسانه میتونی نوشته های خودت رو بنویسی و با دوستات به اشتراک بذاری، اونارو دنبال کنی و با بقیه تعامل داشته باشی.</p>
+            <p class="lead text-right text-muted">به رسانه ما خوش آمدی، توی این رسانه میتونی نوشته های خودت رو بنویسی و با دوستات به اشتراک بذاری، اونارو دنبال کنی و با بقیه تعامل داشته باشی. کاربران تاپ لرن تا کنون {{ $postCount }} پست نوشته اند!</p>
           </div>
           <div class="col-lg-5 pl-lg-5 pb-3 py-lg-5">
             <form action="/register" method="POST" id="registration-form">

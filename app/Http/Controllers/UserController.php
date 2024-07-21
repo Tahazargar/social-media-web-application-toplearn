@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Events\ExampleEvent;
-use App\Events\OurExampleEvent;
-use App\Events\SecondEvent;
+use App\Models\Post;
 use App\Models\User;
+use App\Events\ExampleEvent;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\Cache;
 
 class UserController extends Controller
 {
@@ -27,7 +27,10 @@ class UserController extends Controller
         }
         else
         {
-            return view('home');
+            $postCount = Cache::remember('postCount', 20, function(){
+                return $postCount = Post::count();
+            });
+            return view('home', ['postCount' => $postCount]);
         }
     }
 
