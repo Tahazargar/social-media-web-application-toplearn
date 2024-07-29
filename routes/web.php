@@ -1,9 +1,7 @@
 <?php
 
-use App\Mail\PostEmail;
 use App\Events\ChatMessage;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\MustBeLoggedIn;
 use App\Http\Controllers\PostController;
